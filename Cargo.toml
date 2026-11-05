@@ -1,0 +1,18 @@
+[package]
+name = "nala-strata-rs"
+version = "0.2.11-nala.6.6.6"
+edition = "2024"
+authors = ["NALA-OS Open-Source Engineering", "Original Math & Sharding Catalog: Niko1221/Strata (MIT)"]
+license = "MIT"
+description = "100% Native Rust-Turbo Small-GPU 3-Tier (VRAM + System RAM + NVMe mmap) MoE Offload Planner, Split-Engine Evaluator & Hardened Inference Gateway for NALA-OS v6.6.6"
+
+[[bin]]
+name = "nala-strata-rs"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = false

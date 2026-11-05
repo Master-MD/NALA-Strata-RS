@@ -1,6 +1,8 @@
 MIT License
 
-Copyright (c) 2026 Niko1221 and the Strata contributors
+Copyright (c) 2026 NALA-OS Open-Source Engineering (Native Rust-Turbo Rewrite & Security Hardening)
+Original Mathematical Sharding Formulas & Catalog Copyright (c) 2026 Niko1221/Strata
+Underlying Tensor / GGUF Formats Copyright (c) 2023-2026 Georgi Gerganov (ggml / llama.cpp)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
