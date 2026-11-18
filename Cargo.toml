@@ -1,10 +1,10 @@
 [package]
 name = "nala-strata-rs"
-version = "0.2.11-nala.6.6.6"
+version = "0.2.15-nala.6.6.6"
 edition = "2024"
 authors = ["NALA-OS Open-Source Engineering", "Original Math & Sharding Catalog: Niko1221/Strata (MIT)"]
 license = "MIT"
-description = "100% Native Rust-Turbo Small-GPU 3-Tier (VRAM + System RAM + NVMe mmap) MoE Offload Planner, Split-Engine Evaluator & Hardened Inference Gateway for NALA-OS v6.6.6"
+description = "100% Native Rust-Turbo Small-GPU 3-Tier (VRAM + System RAM + NVMe mmap) MoE Offload Planner, Universal llama.cpp/GGUF Unlocker, Hardware Doctor & Hardened Inference Gateway (v0.2.15)"
 
 [[bin]]
 name = "nala-strata-rs"

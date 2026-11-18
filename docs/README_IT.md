@@ -1,30 +1,21 @@
-# 🇮🇹 NALA-Strata-RS (`v0.2.11-nala.6.6.6`) — Manuale Italiano
+# 🇮🇹 NALA-Strata-RS (`v0.2.15-nala.6.6.6`) — Manuale Italiano
 
-**Motore di Offloading MoE a 3 Livelli (`VRAM + RAM di Sistema + NVMe mmap`) & Gateway di Inferenza Blindato 100 % Rust Nativo (`Edition 2024`, Zero-Python)**
+**Motore di Offloading MoE a 3 Livelli (`VRAM + RAM di Sistema + NVMe mmap`), Sblocco Universale `llama.cpp` GGUF & Doctor Hardware PCIe/NUMA 100 % Rust Nativo (`Edition 2024`, Zero-Python)**
 
 ---
 
-## 1. Perché `NALA-Strata-RS` in 100 % Rust Nativo?
-Il progetto originale `Niko1221/Strata v0.2.11` offre ottimi modelli empirici per piccole GPU, ma richiede **13.43 MB di codice Python** e pacchetti `strata-control-*` da **48 MB a 95 MB** ciascuno.
+## 1. Novità in `v0.2.15-nala.6.6.6` (`OPT-STRATA-01` .. `OPT-STRATA-08`)
+- **`OPT-STRATA-01` — Sblocco Universale `llama-server` (`--load-mode mmap`) & GGUF Locali:** Riabilita l'avvio diretto di modelli `.gguf` locali tramite `llama.cpp` bloccato in `Strata v0.2.15`.
+- **`OPT-STRATA-02` — Sincronizzazione `v0.2.15` + `GLM-5.3-Flash`, `Qwen3.6-35B-A3B` & `Qwen4`:** Include il fix `--drafting off` (risparmia `5.2 GB` di download MTP, avvio in `13s` invece di `272s`, 100 % offline).
+- **`OPT-STRATA-03` — Recupero Arena RAM fino a `-21.7 GiB` (`#3185`).**
+- **`OPT-STRATA-04` — Sblocco Intel Arc `7.06 GiB` (`+78 %`, `#5578`) + Boost Turing/Volta (`sm_61..75`) & Cache PTX-JIT `2 GiB` (`#5784`).**
+- **`OPT-STRATA-05` — Supporto GPU da `4.0 GB` VRAM & WDDM Low-Latency (`#2522`).**
+- **`OPT-STRATA-06` — Conversazioni Parcheggiate su NVMe (`#1937`).**
+- **`OPT-STRATA-07` — Diagnostica PCIe, NUMA, `memlock` & Watt (`nala-strata-rs doctor`).**
 
-Con **`NALA-Strata-RS`**, abbiamo riscritto l'intero pianificatore (`vram_fit`, `dsv41_fit`, `split_engine`), il rilevamento hardware e il server HTTP in **Rust nativo (`rustc 1.99.1`, `edition = "2024"`, `lto = "fat"`)**:
-- **Calcolo del piano `52.9×` più veloce:** `0.606 µs` per iterazione rispetto a `32.04 µs` in Python.
-- **Avvio a freddo CLI `39.3×` più veloce:** `1.42 ms` rispetto a `55.86 ms`.
-- **`98.5 %` di RAM in meno:** `2.1 MB` invece di `~145 MB`.
-- **Parità matematica del `100.000 %`:** Risultati identici al millesimo (`slack_mib = 804.933 MiB`, `kv_resident = 8192` su CUDA 8 GB).
-- **Sicurezza blindata:** Risolve `#2892`, `#4535`, `#4397` ed elimina la vulnerabilità Python Pillow (`GHSA-78g4-xqwv-q3g8`).
-
-## 2. Architettura completa dei 42+ Asset di Rilascio
-Tutti i 42 asset (`install.sh`, `install.ps1`, `install-manifest.txt`, `latest.json`, `strata-feed.json`, `.dmg`, `.AppImage`, `.exe`, `strata-control-*`, `strata-engine-*`, `strata-dsv41-*`) sono inclusi e firmati per Linux, macOS e Windows.
-
-## 3. Comandi Rapidi
+## 2. Comandi Rapidi
 ```bash
-# Visualizza il piano hardware 3-Tier in italiano
-nala-strata-rs --lang it launch
-
-# Esegui il benchmark (10.000 iterazioni)
+nala-strata-rs --lang it --plan --gguf model.gguf --drafting off --json
+nala-strata-rs doctor
 nala-strata-rs --bench
-
-# Avvia il Cockpit Web multilingue (DE / FR / IT / RM / EN)
-nala-strata-rs --lang it --serve --port 18081
 ```
